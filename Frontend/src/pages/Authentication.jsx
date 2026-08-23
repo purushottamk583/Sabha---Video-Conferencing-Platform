@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from '../contexts/AuthContext';
 import { Snackbar } from '@mui/material';
-import "./Authen.css";
+import "../styles/Authentication.css";
 
 
 const defaultTheme = createTheme();
@@ -39,7 +39,7 @@ export default function Authentication() {
                     name,
                     username,
                     password
-                );
+                )
 
                 console.log(result);
                 setUsername("");
@@ -50,9 +50,7 @@ export default function Authentication() {
                 setPassword("");
             }
         } catch (err) {
-            console.log(err);
-            let message = err.response.data.message;
-            setError(message);
+            throw err;
         }
     };
 

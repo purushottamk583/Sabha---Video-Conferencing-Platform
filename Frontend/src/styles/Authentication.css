@@ -266,15 +266,36 @@
     border-width: 1px;
     box-shadow: 0 0 0 3px rgba(46, 156, 255, 0.08);
 }
+
+/* INPUT + BROWSER AUTOFILL FIX */
+
 .sabhaTextField input {
     padding: 11px 12px;
-    color: #dce4ed;
+    color: #dce4ed !important;
     font-size: 11px;
+    caret-color: #5aa9ff;
 }
+
+
+/* Placeholder */
 .sabhaTextField input::placeholder {
-    color: #3e4c5d;
+    color: #3e4c5d !important;
     opacity: 1;
 }
+
+/* Chrome / Edge / Safari autofill */
+.sabhaTextField input:-webkit-autofill,
+.sabhaTextField input:-webkit-autofill:hover,
+.sabhaTextField input:-webkit-autofill:focus,
+.sabhaTextField input:-webkit-autofill:active {
+    -webkit-text-fill-color: #dce4ed !important;
+    -webkit-box-shadow: 0 0 0 1000px #02060b inset !important;
+    box-shadow: 0 0 0 1000px #02060b inset !important;
+    background-color: #02060b !important;
+    caret-color: #ffffff !important;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
 /* error */
 .authError {
     padding: 9px 11px;

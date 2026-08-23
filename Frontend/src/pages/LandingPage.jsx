@@ -3,7 +3,6 @@ import "../App.css"
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function LandingPage() {
-
     const router = useNavigate();
 
     return (
@@ -15,7 +14,6 @@ export default function LandingPage() {
 
             {/* NAVBAR */}
             <nav className="landingNavbar">
-
                 <div className="navBrand">
                     <div className="brandIcon">
                         S
@@ -24,7 +22,6 @@ export default function LandingPage() {
                 </div>
 
                 <div className="navLinks">
-
                     <p>Features</p>
                     <p>About</p>
                     <p>Security</p>
@@ -55,17 +52,12 @@ export default function LandingPage() {
                     >
                         Login
                     </button>
-
                 </div>
-
             </nav>
-
 
             {/* HERO SECTION */}
             <main className="landingHero">
-
                 <div className="heroContent">
-
                     <div className="heroBadge">
                         <span className="statusDot"></span>
                         Secure video communication
@@ -83,7 +75,6 @@ export default function LandingPage() {
                     </p>
 
                     <div className="heroActions">
-
                         <Link
                             to="/auth"
                             className="primaryHeroBtn"
@@ -100,11 +91,9 @@ export default function LandingPage() {
                         >
                             Join as Guest
                         </button>
-
                     </div>
 
                     <div className="heroMeta">
-
                         <div>
                             <span className="metaIcon">✓</span>
                             No installation required
@@ -119,21 +108,15 @@ export default function LandingPage() {
                             <span className="metaIcon">✓</span>
                             Screen sharing
                         </div>
-
                     </div>
-
                 </div>
-
 
                 {/* PRODUCT PREVIEW */}
                 <div className="productPreviewWrapper">
-
                     <div className="previewGlow"></div>
 
                     <div className="productPreview">
-
                         <div className="previewTopBar">
-
                             <div className="previewBrand">
                                 <span className="previewBrandIcon">S</span>
                                 Sabha
@@ -144,24 +127,17 @@ export default function LandingPage() {
                                 <span></span>
                                 <span></span>
                             </div>
-
                         </div>
 
-
                         <div className="videoPreviewContent">
-
                             <div className="videoPreviewMain">
-
                                 <img
                                     src="/mobile.png"
                                     alt="Sabha video conferencing"
                                 />
-
                             </div>
 
-
                             <div className="previewSidePanel">
-
                                 <div className="sidePanelHeader">
                                     <span>Meeting</span>
                                     <span className="liveBadge">
@@ -200,14 +176,11 @@ export default function LandingPage() {
                                     <span>💬</span>
                                     Live chat
                                 </div>
-
                             </div>
-
                         </div>
 
 
                         <div className="previewControls">
-
                             <button>🎤</button>
                             <button>📹</button>
                             <button>🖥</button>
@@ -216,19 +189,13 @@ export default function LandingPage() {
                             <button className="endCall">
                                 End Call
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </main>
-
 
             {/* FEATURES */}
             <section className="featuresSection">
-
                 <div className="featureCard">
                     <div className="featureIcon">◉</div>
                     <h3>HD Video Calls</h3>
@@ -255,9 +222,7 @@ export default function LandingPage() {
                         during your video call.
                     </p>
                 </div>
-
             </section>
-
         </div>
     )
 }

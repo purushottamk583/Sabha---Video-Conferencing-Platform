@@ -1,0 +1,1310 @@
+/* =========================================================
+   SABHA LANDING PAGE
+   Modern SaaS / Video Conferencing UI
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+
+    background: #05080d;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.landingPageContainer {
+    position: relative;
+
+    min-height: 100vh;
+    width: 100%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(25, 82, 145, 0.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 10% 50%,
+            rgba(25, 70, 130, 0.08),
+            transparent 30%
+        ),
+        #05080d;
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+.landingPageContainer::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 75%
+    );
+}
+
+
+/* =========================================================
+   AMBIENT GLOWS
+========================================================= */
+
+.heroGlow {
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    top: -300px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: rgba(29, 111, 214, 0.16);
+
+    filter: blur(120px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.heroGlowSecondary {
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    top: 550px;
+    right: -250px;
+
+    background: rgba(26, 90, 180, 0.12);
+
+    filter: blur(130px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.landingNavbar {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: min(1120px, calc(100% - 40px));
+
+    height: 62px;
+
+    margin: 18px auto 0;
+
+    padding: 0 10px 0 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: rgba(7, 15, 25, 0.72);
+
+    border: 1px solid rgba(120, 170, 220, 0.13);
+
+    border-radius: 12px;
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.navBrand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.brandIcon {
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #38a5ff,
+            #6b63ff
+        );
+
+    box-shadow:
+        0 0 18px rgba(56, 165, 255, 0.35);
+}
+
+
+.navBrand h1 {
+
+    font-size: 16px;
+
+    font-weight: 650;
+
+    letter-spacing: -0.3px;
+
+    color: #f2f6fb;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.navLinks {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 23px;
+
+    color: #8995a5;
+
+    font-size: 11px;
+}
+
+
+.navLinks p {
+
+    margin: 0;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.navLinks p:hover {
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+
+.navDivider {
+
+    width: 1px;
+    height: 18px;
+
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+.navLoginBtn {
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    background: rgba(255, 255, 255, 0.92);
+
+    color: #080b10;
+
+    padding: 8px 15px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.navLoginBtn:hover {
+
+    background: white;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 20px rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.landingHero {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(1120px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding-top: 82px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.heroContent {
+
+    max-width: 760px;
+
+    margin: 0 auto;
+}
+
+
+.heroBadge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 12px;
+
+    margin-bottom: 24px;
+
+    border-radius: 100px;
+
+    border: 1px solid rgba(80, 160, 255, 0.15);
+
+    background: rgba(40, 100, 170, 0.07);
+
+    color: #8495aa;
+
+    font-size: 11px;
+
+    letter-spacing: 0.2px;
+}
+
+
+.statusDot {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #42b883;
+
+    box-shadow:
+        0 0 10px rgba(66, 184, 131, 0.7);
+}
+
+
+/* =========================================================
+   HERO HEADING
+========================================================= */
+
+.heroContent h1 {
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    font-size: clamp(48px, 6.5vw, 82px);
+
+    line-height: 0.98;
+
+    letter-spacing: -4px;
+
+    font-weight: 700;
+
+    color: #f5f7fa;
+}
+
+
+.heroContent h1 span {
+
+    display: inline-block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4da8ff,
+            #6689ff,
+            #a073ff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    color: transparent;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.heroDescription {
+
+    max-width: 610px;
+
+    margin: 27px auto 0;
+
+    color: #7e8b9c;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    letter-spacing: -0.1px;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.heroActions {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 31px;
+}
+
+
+.primaryHeroBtn,
+.secondaryHeroBtn {
+
+    height: 44px;
+
+    padding: 0 20px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.primaryHeroBtn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    text-decoration: none;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2388ef,
+            #5368ef
+        );
+
+    box-shadow:
+        0 10px 30px rgba(42, 119, 235, 0.22);
+}
+
+
+.primaryHeroBtn span {
+
+    font-size: 17px;
+
+    transition: transform 0.2s ease;
+}
+
+
+.primaryHeroBtn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 35px rgba(42, 119, 235, 0.32);
+}
+
+
+.primaryHeroBtn:hover span {
+
+    transform: translateX(3px);
+}
+
+
+.secondaryHeroBtn {
+
+    color: #c8d0da;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.secondaryHeroBtn:hover {
+
+    background: rgba(255, 255, 255, 0.07);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO META
+========================================================= */
+
+.heroMeta {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-top: 20px;
+
+    color: #596676;
+
+    font-size: 10px;
+}
+
+
+.heroMeta > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.metaIcon {
+
+    color: #4d9eff;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PRODUCT PREVIEW
+========================================================= */
+
+.productPreviewWrapper {
+
+    position: relative;
+
+    width: min(980px, 100%);
+
+    margin: 76px auto 0;
+
+    padding: 0 20px;
+}
+
+
+.previewGlow {
+
+    position: absolute;
+
+    width: 70%;
+
+    height: 250px;
+
+    left: 15%;
+
+    bottom: -80px;
+
+    background: rgba(37, 115, 225, 0.2);
+
+    filter: blur(90px);
+
+    border-radius: 50%;
+
+    z-index: -1;
+}
+
+
+.productPreview {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(95, 150, 210, 0.17);
+
+    background:
+        linear-gradient(
+            145deg,
+            #09121e,
+            #05090e
+        );
+
+    box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.6),
+        0 0 80px rgba(24, 90, 170, 0.08);
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   PREVIEW TOP BAR
+========================================================= */
+
+.previewTopBar {
+
+    height: 45px;
+
+    padding: 0 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    background: rgba(10, 18, 29, 0.8);
+}
+
+
+.previewBrand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #c8d2df;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.previewBrandIcon {
+
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 5px;
+
+    font-size: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #258cef,
+            #735df4
+        );
+
+    color: white;
+}
+
+
+.previewWindowControls {
+
+    display: flex;
+
+    gap: 5px;
+}
+
+
+.previewWindowControls span {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #34404e;
+}
+
+
+/* =========================================================
+   VIDEO PREVIEW
+========================================================= */
+
+.videoPreviewContent {
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 230px;
+
+    min-height: 420px;
+
+    background: #070c12;
+}
+
+
+.videoPreviewMain {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(28, 86, 150, 0.13),
+            transparent 55%
+        );
+}
+
+
+.videoPreviewMain img {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    max-height: 370px;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    filter:
+        drop-shadow(
+            0 25px 45px rgba(0, 0, 0, 0.55)
+        );
+
+    transform: rotate(-1deg);
+
+    transition: transform 0.5s ease;
+}
+
+
+.productPreview:hover .videoPreviewMain img {
+
+    transform: rotate(0deg) scale(1.015);
+}
+
+
+/* =========================================================
+   SIDE PANEL
+========================================================= */
+
+.previewSidePanel {
+
+    padding: 20px;
+
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+
+    background: #080e16;
+}
+
+
+.sidePanelHeader {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    color: #b7c2d0;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+.liveBadge {
+
+    font-size: 8px;
+
+    color: #4db6ff;
+
+    background: rgba(54, 145, 230, 0.08);
+
+    padding: 4px 6px;
+
+    border-radius: 5px;
+}
+
+
+.participant {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+
+.participantAvatar {
+
+    width: 31px;
+    height: 31px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1b7fe2,
+            #5f6ef2
+        );
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.participantAvatar.second {
+
+    background:
+        linear-gradient(
+            135deg,
+            #784ce5,
+            #c056b8
+        );
+}
+
+
+.participant strong {
+
+    display: block;
+
+    color: #c4cbd5;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.participant small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #596777;
+
+    font-size: 8px;
+}
+
+
+.meetingFeature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+    color: #707e8e;
+
+    font-size: 9px;
+}
+
+
+.meetingFeature span {
+
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================================
+   PREVIEW CONTROLS
+========================================================= */
+
+.previewControls {
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    background: #080d14;
+}
+
+
+.previewControls button {
+
+    width: 31px;
+    height: 31px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: #8995a4;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+.previewControls .endCall {
+
+    width: auto;
+
+    padding: 0 13px;
+
+    margin-left: 12px;
+
+    color: #ffb3b3;
+
+    border-color: rgba(255, 80, 80, 0.12);
+
+    background: rgba(255, 70, 70, 0.08);
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.featuresSection {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(980px, calc(100% - 40px));
+
+    margin: 100px auto 100px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+
+.featureCard {
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 26, 39, 0.7),
+            rgba(8, 13, 20, 0.7)
+        );
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.featureCard:hover {
+
+    transform: translateY(-5px);
+
+    border-color: rgba(65, 144, 240, 0.2);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 34, 52, 0.85),
+            rgba(8, 14, 22, 0.85)
+        );
+}
+
+
+.featureIcon {
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 9px;
+
+    color: #64aaff;
+
+    background: rgba(57, 139, 232, 0.09);
+
+    border: 1px solid rgba(57, 139, 232, 0.1);
+
+    font-size: 14px;
+}
+
+
+.featureCard h3 {
+
+    margin-bottom: 8px;
+
+    color: #d9e0e8;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.featureCard p {
+
+    color: #667384;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .navLinks {
+
+        gap: 13px;
+    }
+
+    .navLinks p:nth-child(1),
+    .navLinks p:nth-child(2),
+    .navLinks p:nth-child(3),
+    .navDivider {
+
+        display: none;
+    }
+
+    .landingHero {
+
+        padding-top: 65px;
+    }
+
+    .videoPreviewContent {
+
+        grid-template-columns: 1fr;
+    }
+
+    .previewSidePanel {
+
+        display: none;
+    }
+
+    .videoPreviewMain {
+
+        min-height: 350px;
+    }
+
+    .featuresSection {
+
+        grid-template-columns: 1fr;
+
+        max-width: 550px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .landingNavbar {
+
+        width: calc(100% - 24px);
+
+        margin-top: 12px;
+
+        padding-left: 13px;
+    }
+
+    .navLinks {
+
+        gap: 8px;
+    }
+
+    .navLinks p {
+
+        font-size: 9px;
+    }
+
+    .navLinks p:nth-last-of-type(2) {
+
+        display: none;
+    }
+
+    .navLoginBtn {
+
+        padding: 7px 11px;
+
+        font-size: 9px;
+    }
+
+    .landingHero {
+
+        width: calc(100% - 28px);
+
+        padding-top: 58px;
+    }
+
+    .heroBadge {
+
+        font-size: 9px;
+
+        margin-bottom: 20px;
+    }
+
+    .heroContent h1 {
+
+        font-size: 48px;
+
+        line-height: 1.02;
+
+        letter-spacing: -2.5px;
+    }
+
+    .heroDescription {
+
+        font-size: 13px;
+
+        line-height: 1.65;
+
+        padding: 0 8px;
+    }
+
+    .heroActions {
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .primaryHeroBtn,
+    .secondaryHeroBtn {
+
+        width: 100%;
+
+        max-width: 270px;
+    }
+
+    .heroMeta {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        margin-top: 18px;
+    }
+
+    .productPreviewWrapper {
+
+        margin-top: 55px;
+
+        padding: 0;
+    }
+
+    .videoPreviewMain {
+
+        padding: 15px;
+
+        min-height: 260px;
+    }
+
+    .videoPreviewMain img {
+
+        max-height: 250px;
+    }
+
+    .previewControls {
+
+        gap: 5px;
+    }
+
+    .featuresSection {
+
+        width: calc(100% - 28px);
+
+        margin-top: 70px;
+
+        margin-bottom: 60px;
+    }
+
+    .featureCard {
+
+        padding: 20px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .heroContent h1 {
+
+        font-size: 40px;
+    }
+
+    .navBrand h1 {
+
+        font-size: 14px;
+    }
+
+    .navLinks p {
+
+        font-size: 8px;
+    }
+}

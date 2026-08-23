@@ -1,0 +1,1105 @@
+/* =========================================================
+   SABHA AUTHENTICATION PAGE
+========================================================= */
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.authPage {
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 500px;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(31, 103, 190, 0.10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(91, 79, 190, 0.08),
+            transparent 30%
+        ),
+        #05080d;
+
+    color: #ffffff;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+.authPage::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image: linear-gradient(
+        to right,
+        black,
+        transparent 85%
+    );
+}
+
+
+/* =========================================================
+   LEFT SECTION
+========================================================= */
+
+.authBrandSection {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 60px 70px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.authBrandContent {
+
+    width: min(600px, 100%);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.authBrand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 75px;
+}
+
+
+.authBrandIcon {
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2388ef,
+            #7162f4
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 0 25px rgba(54, 137, 239, 0.25);
+}
+
+
+.authBrand span {
+
+    color: #d9e2ed;
+
+    font-size: 18px;
+
+    font-weight: 650;
+
+    letter-spacing: -0.4px;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.authIntro {
+
+    max-width: 590px;
+}
+
+
+.authSmallBadge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 11px;
+
+    margin-bottom: 24px;
+
+    border-radius: 100px;
+
+    border: 1px solid rgba(70, 150, 240, 0.14);
+
+    background: rgba(45, 110, 180, 0.07);
+
+    color: #7f90a4;
+
+    font-size: 10px;
+}
+
+
+.authSmallBadge span {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #42bd87;
+
+    box-shadow:
+        0 0 10px rgba(66, 189, 135, 0.7);
+}
+
+
+.authIntro h1 {
+
+    margin: 0;
+
+    font-size: clamp(42px, 5vw, 66px);
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+
+    font-weight: 700;
+
+    color: #f3f6fa;
+}
+
+
+.authIntro h1 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            #42a4ff,
+            #687fff,
+            #9b72ff
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+.authIntro > p {
+
+    max-width: 500px;
+
+    margin-top: 24px;
+
+    color: #718094;
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.authFeatures {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 17px;
+
+    margin-top: 48px;
+}
+
+
+.authFeature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.authFeatureIcon {
+
+    flex-shrink: 0;
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: rgba(58, 139, 231, 0.08);
+
+    border: 1px solid rgba(67, 145, 231, 0.1);
+
+    color: #5ba8ff;
+
+    font-size: 13px;
+}
+
+
+.authFeature h3 {
+
+    margin: 0 0 4px;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.authFeature p {
+
+    margin: 0;
+
+    color: #657487;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   LEFT FOOTER
+========================================================= */
+
+.authFooterText {
+
+    margin-top: 55px;
+
+    color: #4e5d6d;
+
+    font-size: 10px;
+}
+
+
+.authFooterText span {
+
+    color: #3da8ff;
+
+    margin-right: 6px;
+}
+
+
+/* =========================================================
+   RIGHT FORM SECTION
+========================================================= */
+
+.authFormSection {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px 35px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   AUTH CARD
+========================================================= */
+
+.authCard {
+
+    width: 100%;
+
+    max-width: 410px;
+
+    padding: 34px 32px 27px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(116, 157, 199, 0.14);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11, 20, 31, 0.95),
+            rgba(5, 10, 17, 0.95)
+        );
+
+    box-shadow:
+        0 35px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255,255,255,0.025);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+}
+
+
+/* =========================================================
+   MOBILE BRAND
+========================================================= */
+
+.mobileAuthBrand {
+
+    display: none;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 28px;
+}
+
+
+.mobileAuthBrand .authBrandIcon {
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+}
+
+
+.mobileAuthBrand span {
+
+    font-size: 16px;
+
+    font-weight: 650;
+
+    color: #e1e7ee;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.authHeading h2 {
+
+    margin: 0;
+
+    color: #f2f5f8;
+
+    font-size: 27px;
+
+    font-weight: 650;
+
+    letter-spacing: -1px;
+}
+
+
+.authHeading p {
+
+    margin: 8px 0 0;
+
+    color: #667487;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.authTabs {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    padding: 4px;
+
+    margin-top: 27px;
+
+    border-radius: 8px;
+
+    background: rgba(255,255,255,0.035);
+
+    border: 1px solid rgba(255,255,255,0.055);
+}
+
+
+.authTab {
+
+    height: 33px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #687587;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.authTab.active {
+
+    color: #e9f1f9;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(42, 130, 226, 0.25),
+            rgba(91, 85, 221, 0.20)
+        );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(85, 151, 225, 0.12);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.authForm {
+
+    margin-top: 23px;
+}
+
+
+.authInputGroup {
+
+    margin-bottom: 17px;
+}
+
+
+.authInputGroup label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #a6b2c1;
+
+    font-size: 10px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   PASSWORD LABEL
+========================================================= */
+
+.passwordLabel {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.passwordLabel span {
+
+    color: #55a7ff;
+
+    font-size: 9px;
+
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+
+.passwordLabel span:hover {
+
+    color: #8bc5ff;
+}
+
+
+/* =========================================================
+   MUI TEXT FIELD OVERRIDE
+========================================================= */
+
+.sabhaTextField {
+
+    width: 100%;
+}
+
+
+.sabhaTextField .MuiOutlinedInput-root {
+
+    height: 42px;
+
+    border-radius: 7px;
+
+    background: rgba(2, 6, 11, 0.75);
+
+    color: #dce4ed;
+
+    font-size: 11px;
+
+    transition: all 0.2s ease;
+}
+
+
+.sabhaTextField .MuiOutlinedInput-notchedOutline {
+
+    border-color: rgba(117, 151, 184, 0.16);
+}
+
+
+.sabhaTextField .MuiOutlinedInput-root:hover
+.MuiOutlinedInput-notchedOutline {
+
+    border-color: rgba(82, 151, 224, 0.35);
+}
+
+
+.sabhaTextField .MuiOutlinedInput-root.Mui-focused
+.MuiOutlinedInput-notchedOutline {
+
+    border-color: #2e9cff;
+
+    border-width: 1px;
+
+    box-shadow:
+        0 0 0 3px rgba(46, 156, 255, 0.08);
+}
+
+
+.sabhaTextField input {
+
+    padding: 11px 12px;
+
+    color: #dce4ed;
+
+    font-size: 11px;
+}
+
+
+.sabhaTextField input::placeholder {
+
+    color: #3e4c5d;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.authError {
+
+    padding: 9px 11px;
+
+    margin-top: 3px;
+
+    border-radius: 6px;
+
+    border: 1px solid rgba(255, 77, 77, 0.12);
+
+    background: rgba(255, 70, 70, 0.055);
+
+    color: #ff7f7f;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.authSubmitBtn {
+
+    height: 43px !important;
+
+    margin-top: 7px !important;
+
+    border-radius: 7px !important;
+
+    text-transform: none !important;
+
+    font-family: inherit !important;
+
+    font-size: 11px !important;
+
+    font-weight: 600 !important;
+
+    color: white !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2388ef,
+            #5968ef
+        ) !important;
+
+    box-shadow:
+        0 10px 25px rgba(40, 117, 230, 0.18) !important;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease !important;
+}
+
+
+.authSubmitBtn span {
+
+    margin-left: 8px;
+
+    font-size: 16px;
+
+    transition: transform 0.2s ease;
+}
+
+
+.authSubmitBtn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2e96ff,
+            #6877ff
+        ) !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 14px 30px rgba(40, 117, 230, 0.28) !important;
+}
+
+
+.authSubmitBtn:hover span {
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   SWITCH TEXT
+========================================================= */
+
+.authSwitchText {
+
+    text-align: center;
+
+    margin-top: 17px;
+
+    color: #596778;
+
+    font-size: 10px;
+}
+
+
+.authSwitchText button {
+
+    margin-left: 5px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #57aaff;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.authSwitchText button:hover {
+
+    color: #8bc8ff;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.authDivider {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 23px 0 18px;
+}
+
+
+.authDivider span {
+
+    flex: 1;
+
+    height: 1px;
+
+    background: rgba(255,255,255,0.07);
+}
+
+
+.authDivider p {
+
+    margin: 0;
+
+    color: #4d5a69;
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SOCIAL BUTTONS
+========================================================= */
+
+.socialButtons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.socialBtn {
+
+    width: 100%;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    border-radius: 7px;
+
+    border: 1px solid rgba(111, 144, 177, 0.16);
+
+    background: rgba(255,255,255,0.018);
+
+    color: #aeb9c7;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 550;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.socialBtn:hover {
+
+    background: rgba(255,255,255,0.045);
+
+    border-color: rgba(102, 159, 215, 0.25);
+
+    color: #e0e7ef;
+}
+
+
+.googleIcon {
+
+    width: 18px;
+    height: 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #4285f4;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+.guestIcon {
+
+    width: 18px;
+    height: 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #61aaff;
+
+    background: rgba(58, 145, 236, 0.1);
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+.authSecurityText {
+
+    margin-top: 21px;
+
+    text-align: center;
+
+    color: #3f4d5c;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .authPage {
+
+        grid-template-columns: 1fr 440px;
+    }
+
+    .authBrandSection {
+
+        padding: 50px;
+    }
+
+    .authIntro h1 {
+
+        font-size: 50px;
+
+        letter-spacing: -2.5px;
+    }
+
+    .authFormSection {
+
+        padding: 30px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .authPage {
+
+        display: block;
+
+        min-height: 100vh;
+
+        overflow-y: auto;
+    }
+
+
+    /* Hide desktop brand section */
+
+    .authBrandSection {
+
+        display: none;
+    }
+
+
+    /* Form */
+
+    .authFormSection {
+
+        min-height: 100vh;
+
+        width: 100%;
+
+        padding: 25px 18px;
+
+        align-items: flex-start;
+    }
+
+
+    .authCard {
+
+        max-width: 480px;
+
+        margin: 25px auto;
+
+        padding: 28px 23px 25px;
+    }
+
+
+    .mobileAuthBrand {
+
+        display: flex;
+    }
+
+
+    .authHeading h2 {
+
+        font-size: 25px;
+    }
+
+
+    .authHeading p {
+
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .authFormSection {
+
+        padding: 12px;
+    }
+
+
+    .authCard {
+
+        margin: 12px auto;
+
+        padding: 25px 18px 22px;
+
+        border-radius: 11px;
+    }
+
+
+    .authTabs {
+
+        margin-top: 22px;
+    }
+
+
+    .authIntro h1 {
+
+        font-size: 40px;
+    }
+
+
+    .authSubmitBtn {
+
+        height: 42px !important;
+    }
+
+
+    .socialBtn {
+
+        height: 39px;
+    }
+}

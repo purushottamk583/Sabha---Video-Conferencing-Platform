@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Purushottam kumar",
+  "main": "Src/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon Src/app.js",
+    "start": "node Src/app.js",
+    "prod": "pm2 Src/app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "crypto": "^1.0.1",
+    "express": "^5.2.1",
+    "http-status": "^2.1.0",
+    "mongoose": "^9.7.4",
+    "nodemon": "^3.1.14",
+    "socket.io": "^4.8.3"
+  }
+}

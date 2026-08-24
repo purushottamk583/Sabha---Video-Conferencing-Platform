@@ -50,10 +50,10 @@ export default function Authentication() {
                 setPassword("");
             }
         } catch (err) {
-            throw err;
+            let message = err.response?.data?.message || "Something went wrong";
+            setError(message);
         }
     };
-
 
     return (
         <ThemeProvider theme={defaultTheme}>

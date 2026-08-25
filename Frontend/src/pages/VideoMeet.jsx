@@ -4,7 +4,6 @@ import { Badge, IconButton, TextField } from '@mui/material';
 import { Button } from '@mui/material';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import VideocamOffIcon from '@mui/icons-material/VideocamOff'
-import "../styles/VideoMeet.css";
 import CallEndIcon from '@mui/icons-material/CallEnd'
 import MicIcon from '@mui/icons-material/Mic'
 import MicOffIcon from '@mui/icons-material/MicOff'
@@ -12,7 +11,7 @@ import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare'
 import ChatIcon from '@mui/icons-material/Chat'
 import server from '../environment';
-
+import styles from "../styles/videolobby.module.css"; 
 const server_url = server;
 
 var connections = {};
@@ -432,18 +431,45 @@ export default function VideoMeetComponent() {
 
             {askForUsername === true ?
 
-                <div>
+                <div className={styles.lobbyContainer}>
 
+                    <h2 className={styles.heading}>Ready for <span>Join call</span></h2>
 
-                    <h2>Enter into Lobby </h2>
-                    <TextField id="outlined-basic" label="Username" value={username} onChange={e => setUsername(e.target.value)} variant="outlined" />
-                    <Button variant="contained" onClick={connect}>Connect</Button>
+                    <div className={styles.lobbyContent}>
 
+                        <div className={styles.videobox}>
+                            <video ref={localVideoref} autoPlay muted></video>
+                        </div>
 
-                    <div>
-                        <video ref={localVideoref} autoPlay muted></video>
+                        <div className={styles.entrypoint}>
+                            <h2 className={styles.title}>Enter into Lobby</h2>
+                            <p className={styles.subtitle}>Check your camera and mic before joining</p>
+
+                            <TextField
+                                id="outlined-basic"
+                                htmlFor="connect-btn"
+                                label="Username"
+                                value={username}
+                                onChange={e => setUsername(e.target.value)}
+                                variant="outlined"
+                            />
+
+                            <Button
+                                className={styles.connectBtn}
+                                variant="contained"
+                                id="connect-btn"
+                                onClick={connect}
+                            >
+                                Connect
+                            </Button>
+
+                            <div className={styles.deviceStatus}>
+                                <span className={styles.dot}></span>
+                                Camera and microphone ready
+                            </div>
+                        </div>
+
                     </div>
-
                 </div> :
 
 

@@ -1,0 +1,342 @@
+/* ============================================
+   LOBBY CONTAINER - Google Meet style layout
+   ============================================ */
+
+.lobbyContainer {
+    min-height: 100vh;
+    background-color: #0a0e1a;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 24px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ============================================
+   HEADING
+   ============================================ */
+
+.heading {
+    max-width: 850px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -2px;
+    font-weight: 700;
+    color: #f5f7fa;
+}
+
+.heading span {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ============================================
+   MAIN CONTENT ROW - video + entry panel
+   ============================================ */
+
+.lobbyContent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 32px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* ============================================
+   VIDEO PREVIEW BOX
+   ============================================ */
+
+.videobox {
+    position: relative;
+    flex: 1 1 480px;
+    max-width: 560px;
+    aspect-ratio: 4 / 3;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #10141f;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.05),
+                0 20px 60px rgba(59, 130, 246, 0.15);
+}
+
+.videobox video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scaleX(-1); /* mirror, like a real camera preview */
+}
+
+/* Optional overlay badge for camera/mic status icons */
+.videoOverlay {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    gap: 10px;
+}
+
+.videoOverlay .iconPill {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(10, 14, 26, 0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5f7fa;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   ENTRY PANEL (right side card)
+   ============================================ */
+
+.entrypoint {
+    flex: 1 1 320px;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 32px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #f5f7fa;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #9ca3af;
+    margin: -12px 0 4px 0;
+}
+
+/* MUI TextField overrides to match dark theme */
+.entrypoint .MuiOutlinedInput-root {
+    background-color: #161b2c !important;
+    border-radius: 14px;
+}
+
+.entrypoint .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+}
+
+.entrypoint .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(139, 92, 246, 0.5);
+}
+
+.entrypoint .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #8b5cf6;
+}
+
+.entrypoint .MuiInputBase-input {
+    color: #f5f7fa;
+}
+
+.entrypoint .MuiInputLabel-root {
+    color: #9ca3af;
+}
+
+.entrypoint .MuiOutlinedInput-notchedOutline legend {
+    max-width: 0;
+}
+
+.entrypoint .MuiInputLabel-root {
+    transform: translate(0px, -24px) scale(0.85);
+}
+
+.entrypoint .MuiInputLabel-root.MuiInputLabel-shrink {
+    transform: translate(0px, -24px) scale(0.85);
+}
+
+.entrypoint .MuiOutlinedInput-input {
+    padding: 16px 14px;
+}
+
+/* Fix browser autofill white background override */
+.entrypoint input:-webkit-autofill,
+.entrypoint input:-webkit-autofill:hover,
+.entrypoint input:-webkit-autofill:focus,
+.entrypoint input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #10141f inset !important;
+    -webkit-text-fill-color: #f5f7fa !important;
+    caret-color: #f5f7fa !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+.entrypoint input:autofill {
+    background-color: #10141f !important;
+    color: #f5f7fa !important;
+}
+
+.entrypoint .MuiInputLabel-root.Mui-focused {
+    color: #8b5cf6;
+}
+
+/* Connect button - matches "Get Started" gradient button on landing page */
+.connectBtn {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6) !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    padding: 12px 24px !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.connectBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.45) !important;
+}
+
+/* Small helper row for device status text under the button */
+.deviceStatus {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+.deviceStatus .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+}
+
+/* ============================================
+   RESPONSIVE - stack on smaller screens
+   ============================================ */
+
+@media (max-width: 860px) {
+    .lobbyContent {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .videobox,
+    .entrypoint {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .heading {
+        margin-bottom: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lobbyContainer {
+        padding: 24px 16px;
+    }
+
+    .entrypoint {
+        padding: 24px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.meetVideoContainer {
+    position: relative;
+    height: 100vh;
+    background: rgb(1, 4, 48);
+}
+
+.meetUserVideo {
+    position: absolute;
+    bottom: 10vh;
+    height: 20vh;
+    width: auto;
+    left: 0;
+    border-radius: 20px;
+}
+
+.buttonContainers {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    text-align: center;
+}
+
+.buttonContainers svg {
+    font-size: 3rem;
+}
+
+.conferenceView { 
+
+    display: flex;
+    
+    padding: 10px;
+    gap: 10px;
+}
+
+.conferenceView  video {
+    width: 40vw;
+    height: 20vh;
+    min-width: 30vw;
+    border-radius: 10px;
+}
+
+.chatRoom {
+    position: absolute;
+    height: 90vh;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    width: 30vw;
+    padding-inline: 20px;
+}
+
+.chatContainer {
+    position: relative;
+    height: 100%;
+}
+
+
+.chattingArea {
+    position: absolute;
+    bottom: 0;
+}

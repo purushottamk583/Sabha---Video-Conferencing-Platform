@@ -64,7 +64,7 @@ export default function LandingPage() {
                     </div>
 
                     <h1>
-                        Connect with your
+                        Connect with your&nbsp;
                         <span> loved ones.</span>
                     </h1>
 

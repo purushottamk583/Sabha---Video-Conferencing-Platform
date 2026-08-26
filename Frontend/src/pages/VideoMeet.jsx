@@ -45,10 +45,16 @@ export default function VideoMeetComponent() {
     let [videos, setVideos] = useState([])
 
     useEffect(() => {
+        if (!askForUsername && window.localStream && localVideoref.current) {
+            localVideoref.current.srcObject = window.localStream;
+        }
+    }, [askForUsername]);
+
+    useEffect(() => {
         console.log("HELLO")
         getPermissions();
 
-    })
+    }, [])
 
     let getDislayMedia = () => {
         if (screen) {
@@ -109,12 +115,11 @@ export default function VideoMeetComponent() {
         }
 
 
-    }, [video, audio])
+    }, [])
     let getMedia = () => {
         setVideo(videoAvailable);
         setAudio(audioAvailable);
         connectToSocketServer();
-
     };
 
 
@@ -364,11 +369,22 @@ export default function VideoMeetComponent() {
 
     let handleVideo = () => {
         setVideo(!video);
-        // getUserMedia();
+        if (window.localStream) {
+            const videoTrack = window.localStream.getVideoTracks()[0];
+            if (videoTrack) {
+                videoTrack.enabled = !video; // will become the new toggled value
+            }
+        }
     }
+
     let handleAudio = () => {
-        setAudio(!audio)
-        // getUserMedia();
+        setAudio(!audio);
+        if (window.localStream) {
+            const audioTrack = window.localStream.getAudioTracks()[0];
+            if (audioTrack) {
+                audioTrack.enabled = !audio;
+            }
+        }
     }
 
     useEffect(() => {
@@ -376,6 +392,7 @@ export default function VideoMeetComponent() {
             getDislayMedia();
         }
     }, [screen])
+
     let handleScreen = () => {
         setScreen(!screen);
     }
@@ -478,7 +495,7 @@ export default function VideoMeetComponent() {
                     {showModal ? <div className={styles.chatRoom}>
 
                         <div className={styles.chatContainer}>
-                            <h1>Chat</h1>
+                            <h1>Chats</h1>
 
                             <div className={styles.chattingDisplay}>
 
@@ -522,7 +539,7 @@ export default function VideoMeetComponent() {
                                 {screen === true ? <ScreenShareIcon /> : <StopScreenShareIcon />}
                             </IconButton> : <></>}
 
-                        <Badge badgeContent={newMessages} max={999} color='orange'>
+                        <Badge badgeContent={newMessages} max={999} color='secondary'>
                             <IconButton onClick={() => setModal(!showModal)} style={{ color: "white" }}>
                                 <ChatIcon />                        </IconButton>
                         </Badge>
@@ -547,15 +564,10 @@ export default function VideoMeetComponent() {
                                 >
                                 </video>
                             </div>
-
                         ))}
-
                     </div>
-
                 </div>
-
             }
-
         </div>
     )
 }

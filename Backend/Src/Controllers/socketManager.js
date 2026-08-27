@@ -5,6 +5,7 @@ import { Server } from "socket.io"
 let connections = {};
 let message = {};
 let timeOnline = {};
+let usernames = {};
 
 export const ConnectToSocket = (server) => {
     const io = new Server(server, {
@@ -18,20 +19,21 @@ export const ConnectToSocket = (server) => {
 
     io.on("connection", (Socket) => {
 
-         Socket.on("join-call", (path) => {
+            Socket.on("join-call", (path, username) => {
             if(connections[path] === undefined){
                 connections[path] = [];
             }
             connections[path].push(Socket.id);
 
             timeOnline[Socket.id] = new Date();
+                usernames[Socket.id] = username || "Participant";
 
             // connections[path].forEach(element => {
             //     io.to(element);
             // });
 
             for(let a=0; a<connections[path].length; a++){
-                io.to(connections[path][a]).emit("user-joined", Socket.id, connections[path]);
+                io.to(connections[path][a]).emit("user-joined", Socket.id, connections[path], usernames);
             };
 
             if(message[path] !== undefined){
@@ -94,6 +96,7 @@ export const ConnectToSocket = (server) => {
                         var index = connections[key].indexOf(Socket.id)
 
                         connections[key].splice(index, 1)
+                        delete usernames[Socket.id]
 
 
                         if (connections[key].length === 0) {

@@ -18,7 +18,7 @@ export const ConnectToSocket = (server) => {
 
     io.on("connection", (Socket) => {
 
-         Socket.on("join_call", (path) => {
+         Socket.on("join-call", (path) => {
             if(connections[path] === undefined){
                 connections[path] = [];
             }
@@ -34,11 +34,11 @@ export const ConnectToSocket = (server) => {
                 io.to(connections[path][a]).emit("user-joined", Socket.id, connections[path]);
             };
 
-            if(connections[path] !== undefined){
+            if(message[path] !== undefined){
                 for(let a=0; a<message[path].length ; ++a){
                     io.to(Socket.id).emit("chat-message",
                         message[path][a]['data'],
-                        message[path][a]['sender'], 
+                        message[path][a]['sender'],
                         message[path][a]['socket-id-sender']
                     );
                 }

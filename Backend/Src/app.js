@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import dns from 'node:dns';
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 
@@ -8,7 +11,6 @@ import mongoose from 'mongoose';
 import cors from "cors";
 import { ConnectToSocket } from './Controllers/socketManager.js';
 import userRoutes from "./Routes/users.routes.js";
-
 
 const app = express();
 const server = createServer(app);
@@ -26,7 +28,7 @@ app.get("/get", (req, res) => {
 });
 
 const start = async() => {
-    const connectinoDB = await mongoose.connect("mongodb+srv://purushottamk583_video_conf_app:Purush%40video44%24@cluster0.nz6uwny.mongodb.net/");
+    const connectinoDB = await mongoose.connect(process.env.ATLASDB_URL);
     console.log(`Mongo connected to host: ${connectinoDB.connection.host}`);
     server.listen(app.get("port"), () => {
         console.log("App is listening on port 8000");

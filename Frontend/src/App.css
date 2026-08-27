@@ -1115,6 +1115,123 @@ body {
 
 
 /* =========================================================
+   FOOTER
+========================================================= */
+
+.landingFooter {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    border-top: 1px solid rgba(120, 170, 220, 0.1);
+
+    background: rgba(5, 9, 15, 0.8);
+
+    backdrop-filter: blur(12px);
+
+    padding-top: 50px;
+
+    padding-bottom: 30px;
+}
+
+.footerContainer {
+    width: min(980px, calc(100% - 40px));
+
+    margin: 0 auto;
+}
+
+.footerTop {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding-bottom: 40px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footerBrandInfo {
+    max-width: 300px;
+}
+
+.footerDescription {
+    margin-top: 14px;
+
+    color: #667384;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+.footerNavGrid {
+    display: flex;
+
+    gap: 60px;
+}
+
+.footerColumn h4 {
+    color: #d9e0e8;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    margin-bottom: 14px;
+}
+
+.footerColumn p {
+    color: #667384;
+
+    font-size: 11px;
+
+    margin-bottom: 10px;
+
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+.footerColumn p:hover {
+    color: #38a5ff;
+}
+
+.footerBottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 25px;
+
+    color: #4a5666;
+
+    font-size: 11px;
+}
+
+.footerSocials {
+    display: flex;
+
+    gap: 18px;
+}
+
+.footerSocials span {
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+.footerSocials span:hover {
+    color: #8995a5;
+}
+
+
+/* =========================================================
    RESPONSIVE DESIGN
 ========================================================= */
 
@@ -1158,6 +1275,16 @@ body {
         grid-template-columns: 1fr;
 
         max-width: 550px;
+    }
+
+    .footerTop {
+        flex-direction: column;
+
+        gap: 30px;
+    }
+
+    .footerNavGrid {
+        gap: 40px;
     }
 }
 
@@ -1287,6 +1414,20 @@ body {
     .featureCard {
 
         padding: 20px;
+    }
+
+    .footerNavGrid {
+        flex-wrap: wrap;
+
+        gap: 25px;
+    }
+
+    .footerBottom {
+        flex-direction: column;
+
+        gap: 12px;
+
+        align-items: flex-start;
     }
 }
 

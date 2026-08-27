@@ -136,6 +136,54 @@ function HomeComponent() {
                     </div>
                 </div>
             </div>
+
+            <footer className="landingFooter">
+                <div className="footerContainer">
+                    <div className="footerTop">
+                        <div className="footerBrandInfo">
+                            <div className="navBrand">
+                                <div className="brandIcon">S</div>
+                                <h1>Sabha</h1>
+                            </div>
+                            <p className="footerDescription">
+                                Connect effortlessly with high-quality video calls, screen sharing, and real-time chat.
+                            </p>
+                        </div>
+
+                        <div className="footerNavGrid">
+                            <div className="footerColumn">
+                                <h4>Product</h4>
+                                <p>Features</p>
+                                <p>Security</p>
+                                <p>Enterprise</p>
+                            </div>
+
+                            <div className="footerColumn">
+                                <h4>Account</h4>
+                                <p onClick={() => navigate("/auth")}>Login</p>
+                                <p onClick={() => navigate("/auth")}>Register</p>
+                                <p onClick={() => navigate("/aljk23")}>Join as Guest</p>
+                            </div>
+
+                            <div className="footerColumn">
+                                <h4>Company</h4>
+                                <p>About Us</p>
+                                <p>Privacy Policy</p>
+                                <p>Terms of Service</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="footerBottom">
+                        <p>© {new Date().getFullYear()} Sabha. All rights reserved.</p>
+                        <div className="footerSocials">
+                            <span>GitHub</span>
+                            <span>Twitter</span>
+                            <span>LinkedIn</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     )
 }

@@ -3,12 +3,26 @@
 .authPage {
     min-height: 100vh;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 500px;
+    display: flex;
+    flex-direction: column;
     background: radial-gradient(circle at 20% 50%, rgba(31, 103, 190, 0.10), transparent 35%), radial-gradient(circle at 85% 20%, rgba(91, 79, 190, 0.08), transparent 30%), #05080d;
     color: #ffffff;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+.authNavbar {
+    flex: 0 0 auto;
+    margin-top: 18px;
+}
+.authMain {
+    flex: 1 0 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 500px;
+}
+.authFooter {
+    flex: 0 0 auto;
+    margin-top: auto;
 }
 /* bg grid */
 .authPage::before {
@@ -22,7 +36,7 @@
 }
 /* left section */
 .authBrandSection {
-    min-height: 100vh;
+    min-height: 680px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -148,7 +162,7 @@
 }
 /* right form section */
 .authFormSection {
-    min-height: 100vh;
+    min-height: 680px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -431,7 +445,7 @@
 }
 /* tablet */
 @media (max-width: 1050px) {
-    .authPage { grid-template-columns: 1fr 440px; }
+    .authMain { grid-template-columns: 1fr 440px; }
     .authBrandSection { padding: 50px; }
     .authIntro h1 {
         font-size: 50px;
@@ -442,13 +456,33 @@
 /* mobile */
 @media (max-width: 800px) {
     .authPage {
-        display: block;
+        display: flex;
         min-height: 100vh;
         overflow-y: auto;
     }
+    .authNavbar {
+        width: calc(100% - 24px);
+        margin-top: 12px;
+    }
+    .authNavbar .navLinks p,
+    .authNavbar .navDivider,
+    .authNavbar .navLoginBtn {
+        display: none;
+    }
+    .authNavbar .navLinks p:nth-child(1),
+    .authNavbar .navLinks p:nth-child(2) {
+        display: block;
+        cursor: pointer;
+    }
+    .authNavbar .navLinks {
+        gap: 14px;
+    }
+    .authMain {
+        display: block;
+    }
     .authBrandSection { display: none; }
     .authFormSection {
-        min-height: 100vh;
+        min-height: auto;
         width: 100%;
         padding: 25px 18px;
         align-items: flex-start;
@@ -458,12 +492,14 @@
         margin: 25px auto;
         padding: 28px 23px 25px;
     }
-    .mobileAuthBrand { display: flex; }
     .authHeading h2 { font-size: 25px; }
     .authHeading p { font-size: 11px; }
 }
 /* small mobile */
 @media (max-width: 420px) {
+    .authNavbar {
+        padding: 0 10px;
+    }
     .authFormSection { padding: 12px; }
     .authCard {
         margin: 12px auto;

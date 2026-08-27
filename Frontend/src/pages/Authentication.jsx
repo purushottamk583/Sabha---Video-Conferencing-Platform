@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from '../contexts/AuthContext';
 import { Snackbar } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import "../styles/Authentication.css";
 
 
@@ -18,6 +19,7 @@ const defaultTheme = createTheme();
 
 export default function Authentication() {
 
+    const router = useNavigate();
     const [username, setUsername] = React.useState();
     const [password, setPassword] = React.useState();
     const [name, setName] = React.useState();
@@ -60,22 +62,29 @@ export default function Authentication() {
             <div className="authPage">
                 <CssBaseline />
 
+                <nav className="landingNavbar authNavbar">
+                    <div className="navBrand">
+                        <div className="brandIcon">S</div>
+                        <h1>Sabha</h1>
+                    </div>
+
+                    <div className="navLinks">
+                        <p onClick={() => router("/")}>Features</p>
+                        <p onClick={() => router("/")}>About</p>
+                        <p onClick={() => router("/")}>Security</p>
+                        <span className="navDivider"></span>
+                        <p onClick={() => router("/aljk23")}>Join as Guest</p>
+                    </div>
+                </nav>
+
+                <div className="authMain">
+
                 {/* =================================================
                     LEFT BRAND / INFORMATION SECTION
                 ================================================= */}
 
                 <div className="authBrandSection">
                     <div className="authBrandContent">
-                        {/* Brand */}
-
-                        <div className="authBrand">
-                            <div className="authBrandIcon">
-                                S
-                            </div>
-                            <span>Sabha</span>
-                        </div>
-
-
                         {/* Main heading */}
 
                         <div className="authIntro">
@@ -166,14 +175,6 @@ export default function Authentication() {
 
                 <div className="authFormSection">
                     <div className="authCard">
-
-                        {/* Mobile brand */}
-                        <div className="mobileAuthBrand">
-                            <div className="authBrandIcon">
-                                S
-                            </div>
-                            <span>Sabha</span>
-                        </div>
 
                         {/* Heading */}
                         <div className="authHeading">
@@ -392,6 +393,54 @@ export default function Authentication() {
                         </div>
                     </div>
                 </div>
+
+                </div>
+
+                <footer className="landingFooter authFooter">
+                    <div className="footerContainer">
+                        <div className="footerTop">
+                            <div className="footerBrandInfo">
+                                <div className="navBrand">
+                                    <div className="brandIcon">S</div>
+                                    <h1>Sabha</h1>
+                                </div>
+                                <p className="footerDescription">
+                                    Connect effortlessly with high-quality video calls, screen sharing, and real-time chat.
+                                </p>
+                            </div>
+
+                            <div className="footerNavGrid">
+                                <div className="footerColumn">
+                                    <h4>Product</h4>
+                                    <p onClick={() => router("/")}>Features</p>
+                                    <p onClick={() => router("/")}>Security</p>
+                                    <p>Enterprise</p>
+                                </div>
+                                <div className="footerColumn">
+                                    <h4>Account</h4>
+                                    <p onClick={() => router("/auth")}>Login</p>
+                                    <p onClick={() => router("/auth")}>Register</p>
+                                    <p onClick={() => router("/aljk23")}>Join as Guest</p>
+                                </div>
+                                <div className="footerColumn">
+                                    <h4>Company</h4>
+                                    <p>About Us</p>
+                                    <p>Privacy Policy</p>
+                                    <p>Terms of Service</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="footerBottom">
+                            <p>© {new Date().getFullYear()} Sabha. All rights reserved.</p>
+                            <div className="footerSocials">
+                                <span>GitHub</span>
+                                <span>Twitter</span>
+                                <span>LinkedIn</span>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
 
             </div>
 

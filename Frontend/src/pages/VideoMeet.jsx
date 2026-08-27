@@ -453,19 +453,62 @@ export default function VideoMeetComponent() {
 
             {askForUsername === true ?
 
-                <div className={styles.lobbyContainer}>
+               <div className={styles.lobbyContainer}>
 
-                    <h2 className={styles.heading}>Ready for <span>Join call</span></h2>
+                    {/* Navbar */}
+                    <nav className={styles.navbar}>
 
-                    <div className={styles.lobbyContent}>
-
-                        <div className={styles.videobox}>
-                            <video ref={localVideoref} autoPlay muted></video>
+                        <div className={styles.logo}>
+                            <div className={styles.logoIcon}>S</div>
+                            <span>Sabha</span>
                         </div>
 
+                        <div className={styles.navLinks}>
+                            <a href="#">Features</a>
+                            <a href="#">About</a>
+                            <a href="#">Security</a>
+                        </div>
+
+                    </nav>
+
+
+                    {/* Page heading */}
+                    <h2 className={styles.heading}>
+                        Ready for <span>Join call</span>
+                    </h2>
+
+
+                    {/* Main content */}
+                    <div className={styles.lobbyContent}>
+
+                        {/* Video preview */}
+                        <div className={styles.videobox}>
+
+                            <video
+                                ref={localVideoref}
+                                autoPlay
+                                muted
+                            />
+
+                            <div className={styles.videoStatus}>
+                                <span className={styles.statusDot}></span>
+                                Camera preview
+                            </div>
+
+                        </div>
+
+
+                        {/* Join card */}
                         <div className={styles.entrypoint}>
-                            <h2 className={styles.title}>Enter into Lobby</h2>
-                            <p className={styles.subtitle}>Check your camera and mic before joining</p>
+
+                            <h2 className={styles.title}>
+                                Enter into Lobby
+                            </h2>
+
+                            <p className={styles.subtitle}>
+                                Check your camera and mic before joining
+                            </p>
+
 
                             <TextField
                                 id="outlined-basic"
@@ -476,6 +519,7 @@ export default function VideoMeetComponent() {
                                 variant="outlined"
                             />
 
+
                             <Button
                                 className={styles.connectBtn}
                                 variant="contained"
@@ -485,14 +529,45 @@ export default function VideoMeetComponent() {
                                 Connect
                             </Button>
 
+
                             <div className={styles.deviceStatus}>
+
                                 <span className={styles.dot}></span>
+
                                 Camera and microphone ready
+
                             </div>
+
                         </div>
 
                     </div>
-                </div> :
+
+
+                    {/* Bottom information */}
+                    <div className={styles.features}>
+
+                        <div className={styles.feature}>
+                            <span className={styles.featureIcon}>✓</span>
+                            Secure connection
+                        </div>
+
+                        <span className={styles.featureDivider}></span>
+
+                        <div className={styles.feature}>
+                            <span className={styles.featureIcon}>✓</span>
+                            HD video calling
+                        </div>
+
+                        <span className={styles.featureDivider}></span>
+
+                        <div className={styles.feature}>
+                            <span className={styles.featureIcon}>✓</span>
+                            No installation required
+                        </div>
+
+                    </div>
+
+                </div>:
 
 
                 <div className={styles.meetVideoContainer}>

@@ -1,262 +1,821 @@
-/* ============================================
-   LOBBY CONTAINER - Google Meet style layout
-   ============================================ */
+/* =========================================
+   WAITING / LOBBY PAGE
+   ========================================= */
 
 .lobbyContainer {
     min-height: 100vh;
-    background-color: #0a0e1a;
-    background-image: 
-        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 24px;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    padding: 28px 5vw 40px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(45, 108, 210, 0.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(124, 78, 230, 0.10),
+            transparent 30%
+        ),
+        #050a12;
+
+    color: #f4f7fb;
 }
 
-/* ============================================
+
+/* =========================================
+   BACKGROUND GRID
+   ========================================= */
+
+.lobbyContainer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(86, 132, 190, 0.055) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(86, 132, 190, 0.055) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        rgba(0, 0, 0, 0.75) 55%,
+        transparent 100%
+    );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   SOFT BACKGROUND GLOWS
+   ========================================= */
+
+.lobbyContainer::after {
+    content: "";
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: 35%;
+    left: -220px;
+
+    border-radius: 50%;
+
+    background: rgba(50, 115, 255, 0.10);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+
+.navbar {
+    width: 100%;
+    max-width: 1180px;
+
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 16px;
+
+    background: rgba(8, 16, 27, 0.72);
+
+    border: 1px solid rgba(145, 174, 211, 0.16);
+
+    border-radius: 12px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    position: relative;
+    z-index: 5;
+}
+
+
+/* Logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #eef4ff;
+}
+
+.logoIcon {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: linear-gradient(
+        135deg,
+        #3d8bfd,
+        #7359f5
+    );
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    box-shadow:
+        0 5px 18px rgba(69, 111, 255, 0.30);
+}
+
+
+/* Navbar links */
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+}
+
+.navLinks a {
+    color: #8d9aad;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.navLinks a:hover {
+    color: #dce8ff;
+    transform: translateY(-1px);
+}
+
+
+/* Login */
+
+.loginBtn {
+    border: none;
+
+    padding: 9px 18px;
+
+    border-radius: 8px;
+
+    background: #edf1f7;
+    color: #101722;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.loginBtn:hover {
+    background: white;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.lobbyContent {
+    width: 100%;
+    max-width: 1060px;
+
+    margin-top: 72px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(330px, 0.75fr);
+
+    align-items: center;
+
+    gap: 34px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================
    HEADING
-   ============================================ */
+   ========================================= */
 
 .heading {
-    max-width: 850px;
-    margin: 0 auto 40px auto;
-    text-align: center;
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.1;
-    letter-spacing: -2px;
-    font-weight: 700;
-    color: #f5f7fa;
+    position: absolute;
+
+    top: 105px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    color: #9caac0;
+
+    letter-spacing: -0.2px;
+
+    white-space: nowrap;
+
+    z-index: 3;
 }
 
 .heading span {
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    font-weight: 700;
+
+    background: linear-gradient(
+        90deg,
+        #4295ff,
+        #7560f5
+    );
+
     -webkit-background-clip: text;
     background-clip: text;
+
     color: transparent;
 }
 
-/* ============================================
-   MAIN CONTENT ROW - video + entry panel
-   ============================================ */
 
-.lobbyContent {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-    gap: 32px;
-    width: 100%;
-    max-width: 1100px;
-}
-
-/* ============================================
-   VIDEO PREVIEW BOX
-   ============================================ */
+/* =========================================
+   VIDEO SECTION
+   ========================================= */
 
 .videobox {
     position: relative;
-    flex: 1 1 480px;
-    max-width: 560px;
-    aspect-ratio: 4 / 3;
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    border-radius: 16px;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
     overflow: hidden;
-    background: #10141f;
-    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.05),
-                0 20px 60px rgba(59, 130, 246, 0.15);
+
+    border-radius: 18px;
+
+    background: #0b111b;
+
+    border: 1px solid rgba(133, 169, 213, 0.22);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        0 0 70px rgba(48, 111, 255, 0.08);
+
+    isolation: isolate;
 }
+
+
+/* Video */
 
 .videobox video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+
     display: block;
-    transform: scaleX(-1); /* mirror, like a real camera preview */
+
+    object-fit: cover;
+
+    background: #080d15;
 }
 
-/* Optional overlay badge for camera/mic status icons */
-.videoOverlay {
+
+/* Video inner border */
+
+.videobox::after {
+    content: "";
+
     position: absolute;
-    bottom: 16px;
+    inset: 0;
+
+    border-radius: inherit;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   VIDEO STATUS
+   ========================================= */
+
+.videoStatus {
+    position: absolute;
+
+    top: 16px;
     left: 16px;
-    display: flex;
-    gap: 10px;
-}
 
-.videoOverlay .iconPill {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(10, 14, 26, 0.7);
-    backdrop-filter: blur(6px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #f5f7fa;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
+    z-index: 3;
 
-/* ============================================
-   ENTRY PANEL (right side card)
-   ============================================ */
-
-.entrypoint {
-    flex: 1 1 320px;
-    max-width: 380px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-    padding: 32px;
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-}
-
-.title {
-    font-size: 22px;
-    font-weight: 600;
-    color: #f5f7fa;
-    margin: 0;
-}
-
-.subtitle {
-    font-size: 14px;
-    color: #9ca3af;
-    margin: -12px 0 4px 0;
-}
-
-/* MUI TextField overrides to match dark theme */
-.entrypoint .MuiOutlinedInput-root {
-    background-color: #161b2c !important;
-    border-radius: 14px;
-}
-
-.entrypoint .MuiOutlinedInput-notchedOutline {
-    border-color: rgba(255, 255, 255, 0.15);
-    border-radius: 14px;
-}
-
-.entrypoint .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-    border-color: rgba(139, 92, 246, 0.5);
-}
-
-.entrypoint .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: #8b5cf6;
-}
-
-.entrypoint .MuiInputBase-input {
-    color: #f5f7fa;
-}
-
-.entrypoint .MuiInputLabel-root {
-    color: #9ca3af;
-}
-
-.entrypoint .MuiOutlinedInput-notchedOutline legend {
-    max-width: 0;
-}
-
-.entrypoint .MuiInputLabel-root {
-    transform: translate(0px, -24px) scale(0.85);
-}
-
-.entrypoint .MuiInputLabel-root.MuiInputLabel-shrink {
-    transform: translate(0px, -24px) scale(0.85);
-}
-
-.entrypoint .MuiOutlinedInput-input {
-    padding: 16px 14px;
-}
-
-/* Fix browser autofill white background override */
-.entrypoint input:-webkit-autofill,
-.entrypoint input:-webkit-autofill:hover,
-.entrypoint input:-webkit-autofill:focus,
-.entrypoint input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px #10141f inset !important;
-    -webkit-text-fill-color: #f5f7fa !important;
-    caret-color: #f5f7fa !important;
-    transition: background-color 5000s ease-in-out 0s;
-}
-.entrypoint input:autofill {
-    background-color: #10141f !important;
-    color: #f5f7fa !important;
-}
-
-.entrypoint .MuiInputLabel-root.Mui-focused {
-    color: #8b5cf6;
-}
-
-/* Connect button - matches "Get Started" gradient button on landing page */
-.connectBtn {
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6) !important;
-    color: #fff !important;
-    font-weight: 600 !important;
-    text-transform: none !important;
-    padding: 12px 24px !important;
-    border-radius: 10px !important;
-    font-size: 15px !important;
-    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35) !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-}
-
-.connectBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.45) !important;
-}
-
-/* Small helper row for device status text under the button */
-.deviceStatus {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
-    color: #9ca3af;
-    margin-top: 4px;
+
+    padding: 7px 11px;
+
+    border-radius: 999px;
+
+    background: rgba(7, 15, 25, 0.72);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(12px);
+
+    color: #b8c7da;
+
+    font-size: 11px;
 }
 
-.deviceStatus .dot {
-    width: 8px;
-    height: 8px;
+.statusDot {
+    width: 7px;
+    height: 7px;
+
     border-radius: 50%;
-    background: #22c55e;
-    box-shadow: 0 0 8px #22c55e;
+
+    background: #2fd67c;
+
+    box-shadow:
+        0 0 0 4px rgba(47, 214, 124, 0.10),
+        0 0 12px rgba(47, 214, 124, 0.65);
 }
 
-/* ============================================
-   RESPONSIVE - stack on smaller screens
-   ============================================ */
 
-@media (max-width: 860px) {
-    .lobbyContent {
-        flex-direction: column;
-        align-items: center;
+/* =========================================
+   ENTRY CARD
+   ========================================= */
+
+.entrypoint {
+    position: relative;
+
+    min-height: 380px;
+
+    padding: 38px 34px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 28, 43, 0.90),
+            rgba(12, 18, 30, 0.82)
+        );
+
+    border: 1px solid rgba(133, 164, 204, 0.17);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+    overflow: hidden;
+}
+
+
+/* Small decorative glow */
+
+.entrypoint::before {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    right: -80px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(91, 101, 255, 0.13);
+
+    filter: blur(45px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   TITLE
+   ========================================= */
+
+.title {
+    margin: 0 0 8px;
+
+    color: #f3f6fb;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    letter-spacing: -0.6px;
+}
+
+
+/* Subtitle */
+
+.subtitle {
+    margin: 0 0 28px;
+
+    color: #8795aa;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   MATERIAL UI TEXT FIELD
+   ========================================= */
+
+.entrypoint :global(.MuiTextField-root) {
+    width: 100%;
+
+    margin-bottom: 16px;
+}
+
+.entrypoint :global(.MuiOutlinedInput-root) {
+    min-height: 52px;
+
+    color: #edf3fc;
+
+    background: rgba(5, 11, 20, 0.48);
+
+    border-radius: 9px;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.entrypoint :global(.MuiOutlinedInput-notchedOutline) {
+    border-color: rgba(125, 153, 190, 0.18);
+}
+
+.entrypoint
+    :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline) {
+    border-color: rgba(91, 142, 232, 0.45);
+}
+
+.entrypoint
+    :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline) {
+    border-color: #4e8fff;
+
+    border-width: 1px;
+
+    box-shadow:
+        0 0 0 3px rgba(70, 135, 255, 0.09);
+}
+
+.entrypoint :global(.MuiInputLabel-root) {
+    color: #718198;
+
+    font-size: 13px;
+}
+
+.entrypoint
+    :global(.MuiInputLabel-root.Mui-focused) {
+    color: #75a7ff;
+}
+
+.entrypoint
+    :global(.MuiOutlinedInput-input:-webkit-autofill),
+.entrypoint
+    :global(.MuiOutlinedInput-input:-webkit-autofill:hover),
+.entrypoint
+    :global(.MuiOutlinedInput-input:-webkit-autofill:focus) {
+    -webkit-text-fill-color: #edf3fc;
+    -webkit-box-shadow: 0 0 0 1000px #08111d inset;
+    box-shadow: 0 0 0 1000px #08111d inset;
+    caret-color: #edf3fc;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+
+/* =========================================
+   CONNECT BUTTON
+   ========================================= */
+
+.connectBtn {
+    width: 100% !important;
+
+    height: 50px !important;
+
+    margin-top: 3px !important;
+
+    border-radius: 9px !important;
+
+    text-transform: none !important;
+
+    font-size: 13px !important;
+
+    font-weight: 700 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #378af5,
+            #7657ed
+        ) !important;
+
+    box-shadow:
+        0 10px 28px rgba(71, 105, 238, 0.22) !important;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease !important;
+}
+
+.connectBtn:hover {
+    background:
+        linear-gradient(
+            90deg,
+            #4395ff,
+            #8063f5
+        ) !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 14px 35px rgba(71, 105, 238, 0.32) !important;
+}
+
+
+/* =========================================
+   DEVICE STATUS
+   ========================================= */
+
+.deviceStatus {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 20px;
+
+    color: #8292a8;
+
+    font-size: 11px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #24d77a;
+
+    box-shadow:
+        0 0 0 4px rgba(36, 215, 122, 0.08),
+        0 0 12px rgba(36, 215, 122, 0.45);
+}
+
+
+/* =========================================
+   BOTTOM FEATURES
+   ========================================= */
+
+.features {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 28px;
+
+    margin-top: 42px;
+
+    color: #65748a;
+
+    font-size: 11px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.featureIcon {
+    color: #4f91ff;
+
+    font-size: 12px;
+}
+
+
+/* Divider */
+
+.featureDivider {
+    width: 1px;
+    height: 14px;
+
+    background: rgba(128, 153, 184, 0.15);
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .lobbyContainer {
+        padding: 22px 28px 35px;
     }
 
-    .videobox,
+    .navLinks {
+        gap: 16px;
+    }
+
+    .lobbyContent {
+        grid-template-columns: 1fr;
+
+        max-width: 650px;
+
+        margin-top: 85px;
+    }
+
+    .videobox {
+        aspect-ratio: 16 / 9;
+    }
+
     .entrypoint {
-        max-width: 100%;
-        width: 100%;
+        min-height: auto;
+
+        padding: 30px;
     }
 
     .heading {
-        margin-bottom: 28px;
+        top: 95px;
     }
 }
 
-@media (max-width: 480px) {
+
+/* =========================================
+   RESPONSIVE - MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
     .lobbyContainer {
-        padding: 24px 16px;
+        padding: 16px 15px 30px;
+    }
+
+    .navbar {
+        height: 52px;
+
+        padding: 0 12px;
+    }
+
+    .navLinks {
+        display: none;
+    }
+
+    .logo {
+        font-size: 14px;
+    }
+
+    .loginBtn {
+        padding: 8px 14px;
+    }
+
+    .heading {
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        transform: none;
+
+        margin-top: 42px;
+
+        font-size: 14px;
+    }
+
+    .lobbyContent {
+        margin-top: 22px;
+
+        gap: 18px;
+    }
+
+    .videobox {
+        border-radius: 14px;
+
+        aspect-ratio: 4 / 3;
     }
 
     .entrypoint {
-        padding: 24px;
+        padding: 26px 22px;
+
+        border-radius: 14px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        margin-bottom: 22px;
+    }
+
+    .features {
+        flex-wrap: wrap;
+
+        gap: 12px 18px;
+
+        margin-top: 25px;
+    }
+
+    .featureDivider {
+        display: none;
     }
 }
+
+
+/* =========================================
+   VERY SMALL SCREENS
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    .entrypoint {
+        padding: 22px 18px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .heading {
+        font-size: 13px;
+    }
+
+    .videoStatus {
+        top: 10px;
+        left: 10px;
+
+        font-size: 10px;
+    }
+}
+
+
+
+
+
+
+
 
 
 

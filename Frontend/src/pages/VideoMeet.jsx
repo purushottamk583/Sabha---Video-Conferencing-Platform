@@ -36,7 +36,7 @@ export default function VideoMeetComponent() {
     let [screenAvailable, setScreenAvailable] = useState();
     let [messages, setMessages] = useState([])
     let [message, setMessage] = useState("");
-    let [newMessages, setNewMessages] = useState(3);
+    let [newMessages, setNewMessages] = useState(0);
     let [askForUsername, setAskForUsername] = useState(true);
     let [username, setUsername] = useState("");
 
@@ -296,40 +296,27 @@ export default function VideoMeetComponent() {
 
                     // Wait for their video stream
                     connections[socketListId].ontrack = (event) => {
-                        console.log("BEFORE:", videoRef.current);
-                        console.log("FINDING ID: ", socketListId);
-
                         let stream = event.streams[0];
 
-                        let videoExists = videoRef.current.find(video => video.socketId === socketListId);
-
-                        if (videoExists) {
-                            console.log("FOUND EXISTING");
-
-                            // Update the stream of the existing video
-                            setVideos(videos => {
-                                const updatedVideos = videos.map(video =>
-                                    video.socketId === socketListId ? { ...video, stream } : video
-                                );
-                                videoRef.current = updatedVideos;
-                                return updatedVideos;
-                            });
-                        } else {
-                            // Create a new video
-                            console.log("CREATING NEW");
-                            let newVideo = {
-                                socketId: socketListId,
-                                stream,
-                                autoplay: true,
-                                playsinline: true
-                            };
-
-                            setVideos(videos => {
-                                const updatedVideos = [...videos, newVideo];
-                                videoRef.current = updatedVideos;
-                                return updatedVideos;
-                            });
-                        }
+                        setVideos(prevVideos => {
+                            const existingIndex = prevVideos.findIndex(v => v.socketId === socketListId);
+                            let updatedVideos;
+                            if (existingIndex !== -1) {
+                                // Update existing entry's stream
+                                updatedVideos = [...prevVideos];
+                                updatedVideos[existingIndex] = { ...updatedVideos[existingIndex], stream };
+                            } else {
+                                // Add new entry
+                                updatedVideos = [...prevVideos, {
+                                    socketId: socketListId,
+                                    stream,
+                                    autoplay: true,
+                                    playsinline: true
+                                }];
+                            }
+                            videoRef.current = updatedVideos;
+                            return updatedVideos;
+                        });
                     };
 
 
@@ -420,7 +407,7 @@ export default function VideoMeetComponent() {
             let tracks = localVideoref.current.srcObject.getTracks()
             tracks.forEach(track => track.stop())
         } catch (e) { }
-        window.location.href = "/"
+        window.location.href = "/home"
     }
 
     let openChat = () => {
@@ -522,8 +509,8 @@ export default function VideoMeetComponent() {
                                     console.log(messages)
                                     return (
                                         <div style={{ marginBottom: "20px" }} key={index}>
-                                            <p style={{ fontWeight: "bold" }}>{item.sender}</p>
-                                            <p>{item.data}</p>
+                                            <p style={{ fontWeight: "bold", color: "black" }}>{item.sender}</p>
+                                            <p style={{ color: "black" }}>{item.data}</p>
                                         </div>
                                     )
                                 }) : <p>No Messages Yet</p>}

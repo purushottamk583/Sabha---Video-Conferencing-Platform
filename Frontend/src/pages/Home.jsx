@@ -32,14 +32,17 @@ function HomeComponent() {
                 </div>
 
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <IconButton onClick={
-                        () => {
+                    <div
+                        onClick={() => {
                             navigate("/history")
-                        }
-                    }>
-                        <RestoreIcon />
-                    </IconButton>
-                    <p>History</p>
+                        }}
+                        style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+                    >
+                        <IconButton>
+                            <RestoreIcon />
+                        </IconButton>
+                        <p>History</p>
+                    </div>
 
                     <Button onClick={() => {
                         localStorage.removeItem("token")

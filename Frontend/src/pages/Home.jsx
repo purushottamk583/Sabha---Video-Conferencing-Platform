@@ -22,12 +22,12 @@ function HomeComponent() {
     }
 
     return (
-        <>
+        <div className="sabhaHomePage">
 
             <div className="navBar">
 
-                <div style={{ display: "flex", alignItems: "center" }}>
-
+                <div className="homeBrand">
+                    <div className="brandLogo">S</div>
                     <h2>Sabha</h2>
                 </div>
 
@@ -55,22 +55,85 @@ function HomeComponent() {
 
             <div className="meetContainer">
                 <div className="leftPanel">
-                    <div>
-                        <h2>Providing Quality Video Call Just Like Quality Education</h2>
 
-                        <div style={{ display: 'flex', gap: "10px" }}>
+                    <div className="homeBadge">
+                        <span></span>
+                        Secure video communication
+                    </div>
 
-                            <TextField onChange={e => setMeetingCode(e.target.value)} id="outlined-basic" label="Meeting Code" variant="outlined" />
-                            <Button onClick={handleJoinVideoCall} variant='contained'>Join</Button>
+                    <h1>
+                        Connect with your
+                        <span> loved ones.</span>
+                    </h1>
 
+                    <p className="homeDescription">
+                        Join a video meeting from anywhere. Connect with your
+                        friends, classmates and loved ones through secure video,
+                        screen sharing and live chat.
+                    </p>
+
+                    <div className="meetingJoinBox">
+
+                        <div className="meetingInput">
+                            <TextField
+                                onChange={e => setMeetingCode(e.target.value)}
+                                id="outlined-basic"
+                                label="Meeting Code"
+                                variant="outlined"
+                            />
                         </div>
+
+                        <Button
+                            onClick={handleJoinVideoCall}
+                            variant="contained"
+                            className="joinButton"
+                        >
+                            Join Meeting →
+                        </Button>
+
+                    </div>
+
+                    <div className="homeFeatures">
+
+                        <div>
+                            <span>✓</span>
+                            HD Video Calls
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Screen Sharing
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Live Chat
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div className="rightPanel">
+                    <div className="visualGlow"></div>
+
+                    <div className="visualCard">
+                        <img src="/logo3.png" alt="Sabha video meeting" />
+                    </div>
+
+                    <div className="floatingCard floatingCardOne">
+                        <span>●</span>
+                        HD Video
+                    </div>
+
+                    <div className="floatingCard floatingCardTwo">
+                        <span>✦</span>
+                        Screen Share
                     </div>
                 </div>
-                <div className='rightPanel'>
-                    <img srcSet='/logo3.png' alt="" />
-                </div>
             </div>
-        </>
+        </div>
     )
 }
 

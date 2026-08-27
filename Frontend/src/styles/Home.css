@@ -1,35 +1,780 @@
-.navBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-inline: 20px;
-  text-align: center;
+/* =========================================================
+   SABHA HOME PAGE
+   Everything is scoped under .sabhaHomePage
+   so it will NOT affect Authentication / Landing / Lobby.
+========================================================= */
 
+.sabhaHomePage {
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at 30% 35%,
+            rgba(59, 130, 246, 0.10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 55%,
+            rgba(139, 92, 246, 0.10),
+            transparent 35%
+        ),
+        #05080d;
+
+    color: #f5f7fa;
+
+    position: relative;
+    overflow: hidden;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
 }
-.meetContainer {
-  display: flex;
-  padding-inline: 20px;
-  height: 80vh;
-  gap: 10vw;
-  justify-content: center;
+
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+.sabhaHomePage::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 46px 46px;
+
+    pointer-events: none;
+    z-index: 0;
 }
 
 
+/* =========================================================
+   NAVBAR
+========================================================= */
 
-.leftPanel {
-  height: 100%;
-  display: flex;
-  align-items: center;
+.sabhaHomePage .navBar {
+    width: calc(100% - 160px);
+    max-width: 1060px;
 
+    height: 58px;
+
+    margin: 12px auto 0;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(8, 15, 25, 0.78);
+
+    border: 1px solid rgba(96, 165, 250, 0.18);
+
+    border-radius: 14px;
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-sizing: border-box;
+
+    position: relative;
+    z-index: 5;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
 }
 
-.rightPanel {
-  display: flex;
-  align-items: center;
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.sabhaHomePage .homeBrand {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
 }
 
-.rightPanel > img {
-  width: 30vw;
-  height: auto;
-  border-radius: 20px;
+.sabhaHomePage .brandLogo {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: linear-gradient(
+        135deg,
+        #3b82f6,
+        #8b5cf6
+    );
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow:
+        0 0 18px rgba(59, 130, 246, 0.35);
+}
+
+.sabhaHomePage .homeBrand h2 {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 650;
+
+    color: #f5f7fa;
+}
+
+
+/* =========================================================
+   NAVBAR RIGHT SIDE
+========================================================= */
+
+.sabhaHomePage .navBar > div:last-child {
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 3px;
+}
+
+.sabhaHomePage .navBar p {
+    margin: 0 10px 0 0;
+
+    color: #8e9caf;
+
+    font-size: 12px;
+}
+
+
+/* MUI history icon */
+
+.sabhaHomePage .navBar .MuiIconButton-root {
+    color: #8fa3bb;
+
+    width: 34px;
+    height: 34px;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.sabhaHomePage .navBar .MuiIconButton-root:hover {
+    color: #60a5fa;
+
+    background: rgba(59, 130, 246, 0.08);
+}
+
+
+/* Logout */
+
+.sabhaHomePage .navBar .MuiButton-root {
+    min-width: auto;
+
+    padding: 6px 9px;
+
+    color: #60a5fa;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    text-transform: uppercase;
+}
+
+.sabhaHomePage .navBar .MuiButton-root:hover {
+    background: rgba(59, 130, 246, 0.08);
+}
+
+
+/* =========================================================
+   MAIN MEETING SECTION
+========================================================= */
+
+.sabhaHomePage .meetContainer {
+    width: calc(100% - 160px);
+    max-width: 1060px;
+
+    min-height: calc(100vh - 90px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 70px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   LEFT PANEL
+========================================================= */
+
+.sabhaHomePage .leftPanel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+}
+
+
+/* Inner content */
+
+.sabhaHomePage .leftPanel > div {
+    max-width: 540px;
+}
+
+
+.sabhaHomePage .homeBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 999px;
+    background: rgba(8, 18, 32, 0.55);
+    color: #75aef8;
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.06);
+}
+
+.sabhaHomePage .homeBadge span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #42b883;
+    box-shadow: 0 0 10px rgba(66, 184, 131, 0.7);
+}
+
+
+/* =========================================================
+   HERO HEADING
+========================================================= */
+
+.sabhaHomePage .leftPanel h1 {
+    margin: 0 0 22px;
+
+    max-width: 570px;
+
+    color: #f5f7fa;
+
+    font-size: clamp(42px, 5vw, 68px);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+
+    font-weight: 750;
+}
+
+
+/* Make final part gradient */
+
+.sabhaHomePage .leftPanel h1 {
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #e9eef7 100%
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+}
+
+.sabhaHomePage .homeDescription {
+    max-width: 500px;
+    margin: 0;
+    color: #8c9aae;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MEETING INPUT AREA
+========================================================= */
+
+.sabhaHomePage .meetingJoinBox {
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    max-width: 560px;
+
+    gap: 10px !important;
+
+    margin-top: 30px;
+}
+
+.sabhaHomePage .meetingInput {
+    flex: 1 1 270px;
+    min-width: 0;
+}
+
+
+/* MUI TextField */
+
+.sabhaHomePage .leftPanel .MuiTextField-root {
+    width: 100%;
+}
+
+
+/* Input */
+
+.sabhaHomePage .leftPanel .MuiOutlinedInput-root {
+    height: 50px;
+
+    color: #f5f7fa;
+
+    background: rgba(8, 15, 25, 0.72);
+
+    border-radius: 9px;
+}
+
+.sabhaHomePage .leftPanel
+.MuiOutlinedInput-notchedOutline {
+    border-color: rgba(96, 165, 250, 0.22);
+
+    transition: border-color 0.2s ease;
+}
+
+.sabhaHomePage .leftPanel
+.MuiOutlinedInput-root:hover
+.MuiOutlinedInput-notchedOutline {
+    border-color: rgba(96, 165, 250, 0.45);
+}
+
+.sabhaHomePage .leftPanel
+.MuiOutlinedInput-root.Mui-focused
+.MuiOutlinedInput-notchedOutline {
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 1px rgba(59, 130, 246, 0.12);
+}
+
+
+/* TextField label */
+
+.sabhaHomePage .leftPanel
+.MuiInputLabel-root {
+    color: #718198;
+
+    font-size: 13px;
+}
+
+.sabhaHomePage .leftPanel
+.MuiInputLabel-root.Mui-focused {
+    color: #60a5fa;
+}
+
+
+/* Actual input text */
+
+.sabhaHomePage .leftPanel
+.MuiOutlinedInput-input {
+    color: #f5f7fa;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   JOIN BUTTON
+========================================================= */
+
+.sabhaHomePage .leftPanel .MuiButton-root {
+    height: 50px;
+
+    padding: 0 25px;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #6366f1
+        );
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    text-transform: none;
+
+    box-shadow:
+        0 10px 28px rgba(59, 130, 246, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.sabhaHomePage .leftPanel .MuiButton-root:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #8b5cf6
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 32px rgba(59, 130, 246, 0.30);
+}
+
+.sabhaHomePage .homeFeatures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 27px;
+    color: #9aa8ba;
+    font-size: 12px;
+}
+
+.sabhaHomePage .homeFeatures > div {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.sabhaHomePage .homeFeatures span {
+    color: #62a7ff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   RIGHT PANEL
+========================================================= */
+
+.sabhaHomePage .rightPanel {
+    min-height: 480px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+
+/* Glowing circle behind illustration */
+
+.sabhaHomePage .rightPanel::before {
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.16),
+            rgba(139, 92, 246, 0.07) 40%,
+            transparent 70%
+        );
+
+    filter: blur(10px);
+
+    pointer-events: none;
+}
+
+
+/* Logo / illustration */
+
+.sabhaHomePage .rightPanel img {
+    position: relative;
+    z-index: 2;
+
+    width: min(470px, 100%);
+
+    max-height: 430px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 25px 50px rgba(0, 0, 0, 0.35)
+        );
+}
+
+
+/* =========================================================
+   DECORATIVE FEATURE PILLS
+========================================================= */
+
+.sabhaHomePage .rightPanel::after {
+    content:
+        "✦  HD Video     •  Screen Sharing     •  Live Chat";
+
+    position: absolute;
+
+    bottom: 45px;
+
+    padding: 10px 15px;
+
+    border-radius: 10px;
+
+    background: rgba(8, 15, 25, 0.75);
+
+    border: 1px solid rgba(96, 165, 250, 0.15);
+
+    color: #7890ad;
+
+    font-size: 10px;
+
+    letter-spacing: 0.2px;
+
+    backdrop-filter: blur(12px);
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .sabhaHomePage .navBar {
+        width: calc(100% - 40px);
+    }
+
+    .sabhaHomePage .meetContainer {
+        width: calc(100% - 70px);
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        padding: 60px 0 50px;
+
+        min-height: auto;
+    }
+
+    .sabhaHomePage .leftPanel {
+        justify-content: center;
+
+        text-align: center;
+        align-items: center;
+    }
+
+    .sabhaHomePage .leftPanel > div {
+        max-width: 650px;
+    }
+
+    .sabhaHomePage .leftPanel h1 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .sabhaHomePage .homeDescription {
+        max-width: 620px;
+    }
+
+    .sabhaHomePage .meetingJoinBox {
+        justify-content: center;
+    }
+
+    .sabhaHomePage .homeFeatures {
+        justify-content: center;
+    }
+
+    .sabhaHomePage .rightPanel {
+        min-height: 330px;
+    }
+
+    .sabhaHomePage .rightPanel img {
+        width: min(400px, 80%);
+    }
+
+    .sabhaHomePage .rightPanel::after {
+        bottom: 5px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .sabhaHomePage .navBar {
+        width: calc(100% - 24px);
+
+        height: 56px;
+
+        margin-top: 8px;
+
+        padding: 0 10px;
+    }
+
+    .sabhaHomePage .homeBrand {
+        gap: 7px;
+    }
+
+    .sabhaHomePage .brandLogo {
+        width: 28px;
+        height: 28px;
+    }
+
+    .sabhaHomePage .homeBrand h2 {
+        font-size: 14px;
+    }
+
+    .sabhaHomePage .navBar p {
+        display: none;
+    }
+
+    .sabhaHomePage .meetContainer {
+        width: calc(100% - 36px);
+
+        padding-top: 55px;
+
+        gap: 15px;
+    }
+
+    .sabhaHomePage .leftPanel {
+        text-align: left;
+
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+
+    .sabhaHomePage .leftPanel > div {
+        width: 100%;
+    }
+
+    .sabhaHomePage .homeBadge {
+        margin-bottom: 20px;
+
+        font-size: 9px;
+    }
+
+    .sabhaHomePage .leftPanel h1 {
+        font-size: clamp(40px, 13vw, 58px);
+
+        line-height: 0.98;
+
+        letter-spacing: -2px;
+
+        margin-bottom: 25px;
+    }
+
+    .sabhaHomePage .meetingJoinBox {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        max-width: none;
+
+        gap: 10px !important;
+
+        margin-top: 20px;
+    }
+
+    .sabhaHomePage .leftPanel .MuiTextField-root {
+        width: 100%;
+    }
+
+    .sabhaHomePage .leftPanel .MuiButton-root {
+        width: 100%;
+    }
+
+    .sabhaHomePage .homeFeatures {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sabhaHomePage .rightPanel {
+        min-height: 260px;
+    }
+
+    .sabhaHomePage .rightPanel img {
+        width: 90%;
+        max-height: 280px;
+    }
+
+    .sabhaHomePage .rightPanel::after {
+        font-size: 8px;
+
+        padding: 8px 10px;
+
+        bottom: 0;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .sabhaHomePage .leftPanel h1 {
+        font-size: 39px;
+
+        letter-spacing: -1.8px;
+    }
+
+    .sabhaHomePage .navBar .MuiButton-root {
+        font-size: 10px;
+    }
+
+    .sabhaHomePage .rightPanel {
+        min-height: 220px;
+    }
 }
